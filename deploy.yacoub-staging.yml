@@ -12,7 +12,7 @@ tag: '1.0'
 
 environment: docker
 image:
-    tag: spryker/php:7.4-alpine3.12
+    tag: spryker/php:8.1
     environment:
         SPRYKER_DEFAULT_STORE: "DE"
         SPRYKER_ACTIVE_STORES: "DE,AT"
@@ -69,7 +69,7 @@ groups:
     EU:
         region: EU
         applications:
-            Yves:
+            yves:
                 application: yves
                 endpoints:
                     www.de.yacoub-staging.cloud.spryker.toys:
@@ -103,7 +103,7 @@ groups:
                     backend-api.at.yacoub-staging.cloud.spryker.toys:
                         store: AT
                         entry-point: BackendApi
-            Glue:
+            glue:
                 application: glue
                 endpoints:
                     glue.de.yacoub-staging.cloud.spryker.toys:
@@ -122,6 +122,7 @@ services:
                 protocol: tcp
     broker:
         engine: rabbitmq
+        version: '3.9'
         api:
             username: "spryker"
             password: "secret"
@@ -144,6 +145,7 @@ services:
                 protocol: tcp
     scheduler:
         engine: jenkins
+        version: '2.324'
         endpoints:
             scheduler.yacoub-staging.cloud.spryker.toys:
     mail_catcher:
